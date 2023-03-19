@@ -2,7 +2,9 @@ package project;
 
 public class Video extends ElementoMultimediale implements Play, Volume, Luminosità{
 
-	public Video(String titolo){
+	
+
+	public Video(String titolo, int volume, int durata, int luminosità){
 		super(titolo);
 		this.durata = 4;
 		this.luminosità = 10;

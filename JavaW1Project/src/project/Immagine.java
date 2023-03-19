@@ -4,18 +4,18 @@ public class Immagine extends ElementoMultimediale implements Luminosità, Show{
 
 	
 	
-	public Immagine(String titolo) {
+	public Immagine(String titolo, int luminosità) {
 		super(titolo);
-		this.luminosità = 5;
+		this.luminosità = luminosità;
 	}
 	
 	@Override
-	public String show() {
+	public void show() {
 		String stringa = this.titolo;
 		for(int i = 0; i < this.luminosità; i++) {
 			stringa = stringa + "*"; 
 		}
-		return stringa;
+		System.out.println(stringa);
 	}
 
 	@Override

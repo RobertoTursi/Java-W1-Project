@@ -4,10 +4,10 @@ public class Audio extends ElementoMultimediale implements Play, Volume {
 	
 	
 	
-	public Audio(String titolo) {
+	public Audio(String titolo, int volume, int durata) {
 		super(titolo);
-		this.durata = 4;
-		this.volume = 8;
+		this.durata = durata;
+		this.volume = volume;
 	}
 
 	@Override

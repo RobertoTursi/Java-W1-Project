@@ -6,16 +6,7 @@ public class LettoreMultimediale {
 	static Scanner scanner = new Scanner(System.in);
 
 	public static void main(String[] args) {
-//		Immagine i1 = new Immagine("immagine");
-//		System.out.println(i1.show());
-//		
-//		System.out.println(i1.show());
-//		
-//		Audio a1  = new Audio("audio");
-//		a1.play();
-//		
-//		Video v1 = new Video("video");
-//		v1.play();
+		
 		ElementoMultimediale[] arrayOfMedia = new ElementoMultimediale[5];
 		
 		LettoreMultimediale.setArray(arrayOfMedia);
@@ -23,24 +14,42 @@ public class LettoreMultimediale {
 	
 	static public void setArray(ElementoMultimediale[] arrayOfMedia) {
 		//ElementoMultimediale[] arrayOfMedia = new ElementoMultimediale[5];
-		for(int i = 0; i < 1; i++) {
+		for(int i = 0; i < arrayOfMedia.length; i++) {
 			System.out.println("inserisci la tipologia di media (audio, video o immagine)");
 			String elem = scanner.nextLine();
-			System.out.println("inserisci il titolo");
-			String title = scanner.nextLine();
 			if(elem.equals("audio")) {
-				Audio audio = new Audio(title);
+				System.out.println("inserisci il titolo");
+				String title = scanner.nextLine();
+				System.out.println("Inserisci il volume");
+				int volume = scanner.nextInt();
+				System.out.println("Inserisci la durata");
+				int durata = scanner.nextInt();
+				Audio audio = new Audio(title, volume, durata);
 				arrayOfMedia[i] = audio; 
 			} else if(elem.equals("video")) {
-				Video video = new Video(title);
+				System.out.println("inserisci il titolo");
+				String title = scanner.nextLine();
+				System.out.println("Inserisci il volume");
+				int volume = scanner.nextInt();
+				System.out.println("Inserisci la durata");
+				int durata = scanner.nextInt();
+				System.out.println("Inserisci la luminosità");
+				int luminosità = scanner.nextInt();
+				Video video = new Video(title, volume, durata, luminosità);
 				arrayOfMedia[i] = video;
 			} else if(elem.equals("immagine")) {
-				Immagine immagine = new Immagine(title);
+				System.out.println("inserisci il titolo");
+				String title = scanner.nextLine();
+				System.out.println("Inserisci la luminosità");
+				int luminosità = scanner.nextInt();
+				Immagine immagine = new Immagine(title, luminosità);
 				arrayOfMedia[i] = immagine;
 			} else {
 				System.out.println("comando sconoscito, riprova selezionando uno tra 'audio', 'video' o 'immagine'");
 				i--;
+				continue;
 			}
+			scanner.nextLine();
 		}
 		
 		
@@ -51,24 +60,18 @@ public class LettoreMultimediale {
 			answer = scanner.nextInt();
 			if(answer != 0) {
 				if(arrayOfMedia[answer-1] instanceof Video) {
-					System.out.println("si");
-					//arrayOfMedia[answer-1].show
+					Video v = (Video) arrayOfMedia[answer-1];
+					v.play();
+				}else if (arrayOfMedia[answer-1] instanceof Immagine){
+					Immagine i = (Immagine) arrayOfMedia[answer-1];
+					i.show();
 				}else {
-					System.out.println("no");
+					Audio a = (Audio) arrayOfMedia[answer-1];
+					a.play();
 				}
 			}else {
 				break;
 			}
-
-		}
-		
-//		for(int i = 0; i < arrayOfMedia.length; i++) {
-//			if(arrayOfMedia[i] instanceof Immagine) {
-//				}
+		}	
 	}
-
-	
-	
-	
-
 }
